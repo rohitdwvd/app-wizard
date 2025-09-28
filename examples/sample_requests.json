@@ -1,0 +1,52 @@
+{
+  "ping_request": {
+    "id": 1,
+    "method": "ping"
+  },
+  "text_address_extraction": {
+    "id": 2,
+    "method": "identify_addresses",
+    "params": {
+      "input": "John Smith lives at 123 Main Street, New York, NY 10001. His office is located at 456 Broadway, Manhattan, NY 10013. You can also reach him at his vacation home: 789 Ocean Drive, Miami Beach, FL 33139."
+    }
+  },
+  "file_address_extraction": {
+    "id": 3,
+    "method": "identify_addresses",
+    "params": {
+      "input": "/path/to/your/document.txt",
+      "provider": "openai"
+    }
+  },
+  "url_address_extraction": {
+    "id": 4,
+    "method": "identify_addresses",
+    "params": {
+      "input": "https://example.com/contact-us",
+      "provider": "ollama",
+      "model": "llama3.2:3b"
+    }
+  },
+  "list_providers": {
+    "id": 5,
+    "method": "list_providers"
+  },
+  "list_all_models": {
+    "id": 6,
+    "method": "list_models"
+  },
+  "list_provider_models": {
+    "id": 7,
+    "method": "list_models",
+    "params": {
+      "provider": "ollama"
+    }
+  },
+  "multilingual_text": {
+    "id": 8,
+    "method": "identify_addresses",
+    "params": {
+      "input": "La oficina está en 123 Calle Principal, Madrid, España 28001. Das Büro befindet sich in der Hauptstraße 456, Berlin, Deutschland 10115. オフィスは東京都渋谷区神南1-2-3にあります。"
+    }
+  }
+}

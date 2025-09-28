@@ -1,0 +1,36 @@
+Welcome to our company! We have multiple locations to serve you better.
+
+Our headquarters is located at:
+123 Corporate Blvd, Suite 500
+San Francisco, CA 94105
+United States
+
+East Coast Office:
+456 Madison Avenue, Floor 12
+New York, NY 10022
+USA
+
+European Office:
+789 Oxford Street
+London W1C 1JN
+United Kingdom
+
+Manufacturing Facility:
+321 Industrial Park Drive
+Detroit, MI 48201
+
+For shipping and returns, please use:
+Return Processing Center
+654 Warehouse Way
+Phoenix, AZ 85001
+
+Contact our sales team at:
+Sales Office
+987 Business Center Dr
+Austin, TX 78701
+
+International customers can reach us at:
+Global Support Center
+147 International Plaza
+Toronto, ON M5V 3A8
+Canada
