@@ -21,9 +21,7 @@ class InputHandler:
         self.content_processor = ContentProcessor()
 
     def process_input(self, input_data: str) -> Tuple[str, str]:
-        """
-        Process input and return (content, input_type)
-        """
+        """Process input and return (content, input_type)"""
         if self._is_file_path(input_data):
             return self._read_file(input_data), "file"
         elif self._is_valid_url(input_data):
@@ -43,13 +41,28 @@ class InputHandler:
         except:
             return False
 
+    def _process_file_content(self, content: str, file_path: str) -> str:
+        """Process file content, cleaning HTML if it's an HTML file"""
+        file_extension = os.path.splitext(file_path)[1].lower()
+
+        if file_extension in [".html", ".htm"]:
+            logger.info(f"Processing HTML file: {file_path}")
+            return self.content_processor.clean_html_content(content)
+        elif file_extension in [".txt", ".md", ".json"]:
+            return self.content_processor._truncate_content(content, 10000)
+        else:
+            # For other files, treat as plain text but truncate more aggressively
+            return self.content_processor._truncate_content(content, 8000)
+
     def _read_file(self, file_path: str) -> str:
-        """Read content from a file"""
+        """Read content from a file with smart processing"""
         try:
             with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read()
-            logger.info(f"Successfully read file: {file_path}")
-            return content
+                raw_content = f.read()
+
+            processed_content = self._process_file_content(raw_content, file_path)
+            logger.info(f"Successfully read and processed file: {file_path}")
+            return processed_content
         except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             return ""
@@ -74,8 +87,7 @@ class InputHandler:
                 return cleaned_content
             elif "text/" in content_type:
                 content = response.text
-                if len(content) > 10000:
-                    content = content[:10000] + "... [content truncated]"
+                content = self.content_processor._truncate_content(content, 10000)
                 logger.info(f"Successfully fetched text from URL: {url}")
                 return content
             else:

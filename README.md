@@ -5,23 +5,29 @@ A modular MCP server for identifying addresses from text using various AI provid
 ## Setup
 1. Clone the repo.
 2. install requirements via makefile, run
-```
+```bash
 make install
 or
 make install-dev
 ```
 3. Install ollama locally
-```
+```bash
 make setup-ollama
 ```
 4. To run 
-```
+```bash
 python -m src.main
 ```
-5. Provide json for fields like method, input (text/file/url), provider(model optional)
+or
+```bash
+app-wizard
 ```
+5. Provide json for fields like method, input (text/file/url), provider(model optional)
+```json
 {"id": 1,"method": "identify_addresses","params": {"input": "Contact us at 123 Main St, NYC or visit our LA office at 456 Sunset Blvd","provider": "ollama"}}
+```
 or we can provide exact model
+```json
 {"id": 1,"method": "identify_addresses","params": {"input": "Contact us at 123 Main St, NYC or visit our LA office at 456 Sunset Blvd","provider": "ollama","model": "llama3.2:latest"}}
 ```
 
@@ -62,22 +68,3 @@ from .your_provider import YourProvider
 # In _initialize_providers method:
 self.providers['your_provider'] = YourProvider(self.config.your_provider_config)
 ```
-
-## 🚀 Usage
-
-```bash
-# Start the server
-python -m src.main
-
-# Or after installation
-app-wizard
-```
-
-This modular structure makes it extremely easy to:
-- Add new AI providers
-- Extend functionality
-- Test individual components
-- Deploy as a package
-- Maintain and scale the codebase
-
-The factory pattern ensures that adding new providers requires minimal changes to existing code!
