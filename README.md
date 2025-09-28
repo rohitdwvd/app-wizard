@@ -1,4 +1,29 @@
+# APP-WIZARD
 
+A modular MCP server for identifying addresses from text using various AI providers (OpenAI, Ollama)
+
+## Setup
+1. Clone the repo.
+2. install requirements via makefile, run
+```
+make install
+or
+make install-dev
+```
+3. Install ollama locally
+```
+make setup-ollama
+```
+4. To run 
+```
+python -m src.main
+```
+5. Provide json for fields like method, input (text/file/url), provider(model optional)
+```
+{"id": 1,"method": "identify_addresses","params": {"input": "Contact us at 123 Main St, NYC or visit our LA office at 456 Sunset Blvd","provider": "ollama"}}
+or we can provide exact model
+{"id": 1,"method": "identify_addresses","params": {"input": "Contact us at 123 Main St, NYC or visit our LA office at 456 Sunset Blvd","provider": "ollama","model": "llama3.2:latest"}}
+```
 
 ## 🔧 Adding New Providers
 

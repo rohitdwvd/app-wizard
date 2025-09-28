@@ -58,7 +58,7 @@ docker-run:
 # Install Ollama and setup models
 setup-ollama:
 	@echo "Installing Ollama models..."
-	ollama pull llama3.2:1b
+	ollama pull llama3.2:latest
 	ollama pull llama3.2:3b
 	@echo "✅ Ollama models installed"
 

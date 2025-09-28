@@ -18,7 +18,7 @@ class OllamaProvider(BaseProvider):
     def __init__(self, config):
         super().__init__(config)
         self.base_url = config.get("base_url", "http://localhost:11434")
-        self.default_model = config.get("default_model", "llama3.2:1b")
+        self.default_model = config.get("default_model", "llama3.2:latest")
         logger.info(f"Ollama provider initialized with URL: {self.base_url}")
 
     @property
